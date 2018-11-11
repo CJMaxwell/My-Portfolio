@@ -8,6 +8,10 @@ export const up = (knex, Promise) =>
       table.string("firstName").notNullable();
       table.string("lastName").notNullable();
       table
+        .string("role")
+        .defaultTo("user")
+        .notNullable();
+      table
         .string("avatar")
         .defaultTo("create avatar")
         .notNullable();
