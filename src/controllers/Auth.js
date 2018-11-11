@@ -31,15 +31,34 @@ class Auth {
           error: `${email} already exists`
         });
       }
-      // console.log(error.constraint);
-      // console.log(error);
     }
   }
 
   static async login(req, res) {
-    res.json({
-      message: "Welcome"
-    });
+    const { email, password } = req.body;
+    try {
+      const existingUser = await user.where({ email });
+      if (existingUser.length === 0) {
+        res.status(404).json({
+          error: "User does not exist"
+        });
+      } else {
+        const { id, hashedPassword } = existingUser[0];
+
+        const passwordMatches = Password.compare(password, hashedPassword);
+        if (passwordMatches) {
+          delete existingUser[0].hashedPassword;
+          res.status(200).json({
+            user: existingUser[0],
+            token: await JWT.createToken({ id, email })
+          });
+        } else {
+          res.status(401).json({
+            error: "Invalid Credentials"
+          });
+        }
+      }
+    } catch (err) {}
   }
 }
 
