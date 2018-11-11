@@ -4,6 +4,10 @@
   "description": "A Simple Portfolio Website",
   "main": "index.js",
   "scripts": {
+    "start-dev": "nodemon -r esm src/app",
+    "db:migrate": "node -r esm node_modules/.bin/knex migrate:latest",
+    "heroku-postbuild": "npm run db:migrate",
+    "knex": "node -r esm node_modules/knex/bin/cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +21,11 @@
   },
   "homepage": "https://github.com/CJMaxwell/My-Portfolio#readme",
   "dependencies": {
+    "dotenv": "^6.1.0",
     "esm": "^3.0.84",
     "express": "^4.16.4",
     "knex": "^0.15.2",
-    "pg": "^7.6.1"
+    "pg": "^7.6.1",
+    "uuid": "^3.3.2"
   }
 }
