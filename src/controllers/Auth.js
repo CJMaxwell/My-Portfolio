@@ -58,7 +58,11 @@ class Auth {
           });
         }
       }
-    } catch (err) {}
+    } catch (error) {
+      res.status(500).json({
+        error: "An error occurred"
+      });
+    }
   }
 }
 
