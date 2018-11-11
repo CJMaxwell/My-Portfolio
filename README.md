@@ -1,0 +1,1 @@
+[![Coverage Status](https://coveralls.io/repos/github/CJMaxwell/My-Portfolio/badge.svg?branch=setup_test)](https://coveralls.io/github/CJMaxwell/My-Portfolio?branch=setup_test) [![Build Status](https://travis-ci.org/CJMaxwell/My-Portfolio.svg?branch=develop)](https://travis-ci.org/CJMaxwell/My-Portfolio)
